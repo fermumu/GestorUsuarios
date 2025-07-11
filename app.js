@@ -7,14 +7,14 @@ const { Sequelize } = require("sequelize");
 require("dotenv").config();
 
 app.use(express.json());
-app.use("/api/users", userRoutes);
+app.use("/api/users", userRoutes);  //Prefigo para las rutas
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;  //Conexion con la base de datos
 
-sequelize.sync()
+sequelize.sync()   //sincroniza los modelos de la DB y crea las tablas si aun no estan creadas
     .then(() => {
         console.log("Base de datos encontrada");
-        app.listen(PORT, ()=>{
+        app.listen(PORT, ()=>{    //inicializamos el servidor y escucha las request del usuario
             console.log(`Servidor corriendo en http://localhost:${PORT}`);
             
         });
