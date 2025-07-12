@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  backend:
+    container_name: api-backend
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysql
+    environment:
+      - DB_HOST=mysql
+      - DB_USER=root
+      - DB_PASSWORD=admin
+      - DB_NAME=api_users
+      - DB_PORT=3306
+      - PORT=3000
+    volumes:
+      - .:/app
+    restart: always
+
+  mysql:
+    image: mysql:8
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: api_users
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
+
