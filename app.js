@@ -1,10 +1,13 @@
 const express = require("express");
+const swaggerUi = require("swagger-ui-express");
+const YAML = require("yamljs");
 const app = express();
 const sequelize = require("./config/dataBaseConfig");
 const userRoutes = require("./routes/userRoutes");
-const { Sequelize } = require("sequelize");
+const swaggerDocument = YAML.load('./swagger.yaml');
 require("dotenv").config();
 
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use(express.json());
 app.use("/api/users", userRoutes);  //Prefigo para las rutas
 
