@@ -5,21 +5,24 @@
 En el siguiente proyecto se desarrolla una API REST sencilla que permite realizar operaciones CRUD sobre una tabla de usuarios. Utiliza Node.js, Express, Sequelize y MySQL.
 
 ## Tecnologías utilizadas
-Node.js
-Express
-Sequelize ORM
-MySQL
-dotenv
+- Node.js
+- Express
+- Sequelize (ORM)
+- MySQL
+- dotenv
+- Docker (opcional para despliegue)
+- Docker Compose
 
 ## Requisitos previos
-Node.js Ya instalado 
-MySQL corriendo localmente con las configuraciones de las variables de entorno ya realizadas
-Git 
+- Node.js instalado
+- MySQL corriendo localmente
+- Git instalado 
 
-## Instalación de la API de gestion de usuarios
+## Instalación de la API de gestion de usuarios (ejecicion local sin Docker)
 
 1. ### Clonar el siguiente repositorio
     git clone https://github.com/fermumu/GestorUsuarios.git
+    cd GestorUsuarios
 
 2. ### Instala las dependencias
     npm install
@@ -36,6 +39,25 @@ Git
 
 5. ### Levantar el servidor
     Digite en la terminal el siguiente comando y precione enter : node app.js
+
+## Ejecucion de la API con Docker
+### Requisitos previos
+    - Asegurar tener Docker Desktop instalado en tu sistema
+    - Docker desktop debe estar corriendo (Engine running)
+
+1. ### Clona el repositorio
+    git clone https://github.com/fermumu/GestorUsuarios.git
+    cd GestorUsuarios
+
+2. ### En la terminal (bash) jecuta la API con Docker compose
+    docker-compose up --build
+
+    Esto levantará:
+
+- Un contenedor para la API (api-backend)
+- Un contenedor para MySQL (mysql)
+- Una red interna para que se comuniquen
+- Un volumen persistente para los datos de MySQL
 
 ## Endpoints/metodos principales que puede usar
 
@@ -58,18 +80,22 @@ adminUsers/
 ├── controllers/        # Lógica de negocio (CRUD)
 │   └── userController.js
 │
-├── models/             # Definición de modelos (ORM)
+├── models/             # Definición del modelo de usuario
 │   └── userModel.js
 │
 ├── routes/             # Enrutamiento de endpoints
 │   └── userRoutes.js
 │
 ├── .env                # Variables de entorno (no subir al repo)
-├── .gitignore          # Ignora node_modules y .env
+├── .gitignore          # Ignora node_modules, .env, etc.
+├── .dockerignore       # Ignora archivos innecesarios para el contenedor
+├── Dockerfile          # Imagen personalizada de Node.js para la API
+├── docker-compose.yml  # Orquestación de contenedores (API + MySQL)
 ├── app.js              # Archivo principal de ejecución
 └── README.md           # Esta documentación
 
+
 # Notas
 - Para probar los endpoints puedes usar Postman o cualquier cliente HTTP.
-
 - La tabla se crea automáticamente al ejecutar el servidor si no existe, si ya existe, el sistema no creara otra tabla.
+- Si la API se ejecuta con docker los datos se almacenan en un volumen docker para persistencia

@@ -10,7 +10,7 @@ COPY package*.json ./
 # instalar dependencias
 RUN npm install
 
-# copiar el código
+# copiar el codigo
 COPY . .
 
 # exponer el puerto
