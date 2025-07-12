@@ -1,5 +1,3 @@
-
-
 # Gestor de Usuarios – API REST con Node.js, Express y MySQL
 
 En el siguiente proyecto se desarrolla una API REST sencilla que permite realizar operaciones CRUD sobre una tabla de usuarios. Utiliza Node.js, Express, Sequelize y MySQL.
@@ -58,6 +56,13 @@ En el siguiente proyecto se desarrolla una API REST sencilla que permite realiza
 - Un contenedor para MySQL (mysql)
 - Una red interna para que se comuniquen
 - Un volumen persistente para los datos de MySQL
+
+## Verificacion de la documentacion de la API
+- Una vez que el servidor esté en ejecución, ya sea mediante Docker (docker-compose up --build) o de forma local (node app.js), puedes acceder a la documentación interactiva de la API en tu navegador ingresando a la siguiente URL:
+
+    http://localhost:3000/api-docs
+
+- Esta ruta te mostrará la documentación generada con Swagger UI, donde podrás visualizar y probar los distintos endpoints disponibles de forma sencilla.
 
 ## Endpoints/metodos principales que puede usar
 
